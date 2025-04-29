@@ -2,6 +2,7 @@ name: Build and Publish APK
 on:
   push:
     tags: ["v*"]  # 推送标签时触发（如 v1.0）
+  workflow_dispatch:  # 允许手动触发
 
 jobs:
   build:
