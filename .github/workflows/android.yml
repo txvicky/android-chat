@@ -30,7 +30,7 @@ jobs:
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
           chmod +x gradlew
-          ./gradlew assembleRelease
+          ./gradlew :chat:assembleRelease
 
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v4
