@@ -6,11 +6,16 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     signingConfigs {
-        wfc {
-            keyAlias 'wfc'
-            keyPassword 'wildfirechat'
-            storeFile file('../wfc.keystore')
-            storePassword 'wildfirechat'
+        release {
+            storeFile file("worldcentre.jks")
+            storePassword System.getenv("STORE_PASSWORD")
+            keyAlias System.getenv("KEY_ALIAS")
+            keyPassword System.getenv("KEY_PASSWORD")
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
         }
     }
     compileSdkVersion 34
