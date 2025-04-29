@@ -17,12 +17,13 @@ jobs:
         cache: gradle
       
     - name: Decode Keystore
-        run: |
+      run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > worldcentre.jks
+          chmod 644 worldcentre.jks
           echo "worldcentre.jks" >> $GITHUB_PATH
 
     - name: Build Release APK
-        env:
+      env:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
